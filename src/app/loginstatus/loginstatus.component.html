@@ -1,0 +1,17 @@
+{{title}}
+<div *ngIf="loginStatus; else login" >
+        The user is logged in.<button (click)="handleLogoutClick()"> logout</button>
+</div>
+<ng-template #login>
+    <div> Please login to continue.
+            <button (click)="handleLoginClick()"> login</button>
+    </div>
+</ng-template>
+
+<!-- 
+<div *ngIf="loginStatus; then logout else login"></div>
+
+<ng-template #login>Please login to continue.</ng-template>
+<ng-template #logout>Hi Gary, <button>Logout now</button>.</ng-template>
+
+-->

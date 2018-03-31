@@ -1,0 +1,17 @@
+<hr> 
+<h5>Template Driven Form</h5>
+<form #userLogin = "ngForm" (ngSubmit) = "handleFormSubmit(userLogin.value)">
+    <input type = "text" name = "emailId" placeholder = "emailid" ngModel>
+    <br/>
+    <input type = "password" name = "pwd" placeholder = "passwd" ngModel>
+    <br/>
+    <input type = "submit" value = "submit">
+</form>
+<hr>
+
+<h5> Model Driven Form</h5>
+<form [formGroup]="formData" (ngSubmit)="handleOnSubmit(formData.value)">
+    <input type="text" name="userId" formControlName="userId">
+    <input type="text" name="userName" formControlName="userName">
+    <input type="submit">
+</form>

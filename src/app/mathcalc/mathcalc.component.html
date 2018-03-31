@@ -1,0 +1,7 @@
+<h5> Math Calculator </h5>
+<input type="number" [(ngModel)]="x">
+<input type="number" [(ngModel)]="y">
+<div> {{result }}</div>
+<div [innerHTML]="result"></div>
+<button (click)="add()">Add</button>
+<button (click)="sub()">Sub</button>

@@ -1,0 +1,30 @@
+<hr>
+<h6>
+	App Title:: {{title | uppercase}}!
+</h6>
+<hr>
+<div> 
+	<label> Change App Title: </label>
+	<input type="text" id="" #txtAppTile>
+	<input type="button" value="Change App Title" (click)="onGetAppNameClicked(txtAppTile.value)"/>
+</div>
+<hr>
+<div>	
+		<label> User Details: </label>
+		<input type="text" [value]="userId">
+		<input type="text"  [(ngModel)]="userName">
+		<div> {{userId}}</div>
+		<div> {{userName}}</div>
+</div>
+<hr>
+<ul *ngIf="showLinks">
+	<li *ngFor="let item of menuLinks; index as i; even as isEven; odd as isOdd; first as isFirst; last as isLast; trackBy: trackByFn">
+		{{item}}
+	</li>
+</ul>
+<input type="button" (click)="toogleLinks()" value="showHiden"/> 
+<hr>
+<div>
+	<h6>Custome Directive</h6>
+	<div changeText></div>
+</div>
