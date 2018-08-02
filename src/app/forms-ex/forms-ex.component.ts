@@ -9,6 +9,7 @@ import 'rxjs/add/operator/map';
 })
 export class UserFormComponent{
     constructor(private http: Http) { }
+    userName = new FormControl('HariKrishna');
     formData;
 
     handleFormSubmit (userDetails) {
@@ -30,5 +31,9 @@ export class UserFormComponent{
 
     handleOnSubmit (userDetails){
         console.log('Modal Driven Data..', userDetails);
+    }
+
+    handleRegistrationSubmit (registrationDetails) {
+        console.log('registrationDetails>>', registrationDetails);
     }
 }

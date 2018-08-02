@@ -10,8 +10,52 @@
 <hr>
 
 <h5> Model Driven Form</h5>
+
+<input type="text" [formControl]="userName">
+<div> {{userName.value}}</div>
+<br>
 <form [formGroup]="formData" (ngSubmit)="handleOnSubmit(formData.value)">
     <input type="text" name="userId" formControlName="userId">
     <input type="text" name="userName" formControlName="userName">
     <input type="submit">
 </form>
+
+
+<hr>
+<h5> Registration Form </h5>
+<form #userForm="ngForm" (ngSubmit)="handleRegistrationSubmit(userForm.value)">
+    <div class="form-group">
+       
+        <input type="text" #nameRef="ngModel" required minlength="4" class="form-control"  placeholder="Yourname" name="name" ngModel>
+       <div *ngIf="nameRef.errors && (nameRef.dirty || nameRef.touched)" class="alert alert-danger">
+           <div [hidden]="!nameRef.errors.required"> Please Enter UserName</div>
+           <div [hidden]="!nameRef.errors.minlength"> Please Enter Minimum 4 Characters</div>
+           </div>
+      </div>
+      <div class="form-group">
+      
+        <input type="email" #emailRef="ngModel" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required  class="form-control"  placeholder="Email" name="email" ngModel>
+           <div *ngIf="emailRef.errors && (emailRef.dirty || emailRef.touched)" class="alert alert-danger">
+          <div [hidden]="!emailRef.errors.required "> Please Enter Email </div>
+           <div [hidden]="!emailRef.errors.pattern "> Please Enter Correct Email</div>
+           </div>
+      </div>
+      <div class="form-group">
+       
+        <input type="text" #mobileRef="ngModel" pattern="^[1-9][0-9]{9}$" required  class="form-control"  placeholder="Mobile" name="mobile" ngModel>
+       <div *ngIf="mobileRef.errors && (mobileRef.dirty || mobileRef.touched)" class="alert alert-danger">
+           <div [hidden]="!mobileRef.errors.pattern"> Please Enter 10 numbers</div>
+           <div [hidden]="!mobileRef.errors.required"> Please Enter mobile number</div>
+       
+           </div>
+      </div>
+      <div class="form-group">
+        
+        <input type="text" #addRef="ngModel" required  class="form-control"  placeholder="Address"  name="address" ngModel>
+        <div *ngIf="addRef.errors && (addRef.dirty || addRef.touched || addRef.valid)" class="alert alert-danger">
+          <div [hidden]="!addRef.errors.required "> Please Enter Address</div>
+      </div>
+      </div>
+    
+      <button [disabled]=" !userForm.form.valid" type="submit" class="btn btn-primary">Submit</button>
+    </form>
